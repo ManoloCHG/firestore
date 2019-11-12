@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Libros
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-item>
+      <ion-label>Título</ion-label>
+      <ion-input [(ngModel)]="libroEditando.titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descripción</ion-label>
+      <ion-input [(ngModel)]="libroEditando.descripcion"></ion-input>
+    </ion-item>
+    <ion-button (click)="clicBotonInsertar()">Añadir libro</ion-button>
+  </div>
+</ion-content>
