@@ -19,6 +19,7 @@ export class HomePage {
   constructor(private firestoreService: FirestoreService) {
 
     this.libroEditando = {} as Libro;
+    this.obtenerListaLibros();
   }
 
   clicBotonInsertar() {

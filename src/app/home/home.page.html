@@ -16,11 +16,27 @@
       <ion-label>Descripción</ion-label>
       <ion-input [(ngModel)]="libroEditando.descripcion"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label>Imagen</ion-label>
+      <ion-input [(ngModel)]="libroEditando.url"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>ISBN</ion-label>
+      <ion-input [(ngModel)]="libroEditando.ISBN"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Autor</ion-label>
+      <ion-input [(ngModel)]="libroEditando.autor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Idioma</ion-label>
+      <ion-input [(ngModel)]="libroEditando.idioma"></ion-input>
+    </ion-item>
     <ion-button (click)="clicBotonInsertar()">Añadir libro</ion-button>
   </div>
   <h1>LISTA DE LIBROS</h1>
   <ion-list>
-    <ion-item *ngFor="let documentLibro of arrayColeccionLibros">
+    <ion-item *ngFor="let documentLibro of arrayColeccionLibros" (click)="selecLibro(documentLibro)">
       <ion-grid>
         <ion-row>
           <h2>{{documentLibro.data.titulo}}</h2>
@@ -29,9 +45,6 @@
           <p>{{documentLibro.data.descripcion}}</p>
         </ion-row>
       </ion-grid>
-    </ion-item>
-    <ion-item *ngFor="let documentLibro of arrayColeccionLibros" (click)="selecLibro(documentLibro)">
-      ...
     </ion-item>
     <ion-button (click)="clicBotonBorrar()">Borrar Libro</ion-button>
     <ion-button (click)="clicBotonModificar()">Modificar Libro</ion-button>
