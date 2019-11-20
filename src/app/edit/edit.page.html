@@ -8,5 +8,33 @@
 </ion-header>
 
 <ion-content>
-
+  <div class="ion-padding">
+    <ion-item>
+      <ion-label>Título</ion-label>
+      <ion-input [(ngModel)]="documentLibro.data.titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descripción</ion-label>
+      <ion-input [(ngModel)]="documentLibro.data.descripcion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Imagen</ion-label>
+      <ion-input [(ngModel)]="documentLibro.data.url"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>ISBN</ion-label>
+      <ion-input [(ngModel)]="documentLibro.data.ISBN"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Autor</ion-label>
+      <ion-input [(ngModel)]="documentLibro.data.autor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Idioma</ion-label>
+      <ion-input [(ngModel)]="documentLibro.data.idioma"></ion-input>
+    </ion-item>
+    <ion-img [src]="documentLibro.data.url"></ion-img>
+  </div>
+    <!-- <ion-button (click)="clicBotonBorrar()">Borrar Libro</ion-button>
+    <ion-button (click)="clicBotonModificar()">Modificar Libro</ion-button> -->
 </ion-content>

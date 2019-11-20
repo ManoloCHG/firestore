@@ -7,36 +7,9 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    <!-- <ion-item>
-      <ion-label>Título</ion-label>
-      <ion-input [(ngModel)]="libroEditando.titulo"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Descripción</ion-label>
-      <ion-input [(ngModel)]="libroEditando.descripcion"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Imagen</ion-label>
-      <ion-input [(ngModel)]="libroEditando.url"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>ISBN</ion-label>
-      <ion-input [(ngModel)]="libroEditando.ISBN"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Autor</ion-label>
-      <ion-input [(ngModel)]="libroEditando.autor"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Idioma</ion-label>
-      <ion-input [(ngModel)]="libroEditando.idioma"></ion-input>
-    </ion-item>
-    <ion-button (click)="clicBotonInsertar()">Añadir libro</ion-button>-->
-  </div>
   <h1>LISTA DE LIBROS</h1>
   <ion-list>
-    <ion-item *ngFor="let documentLibro of arrayColeccionLibros" (click)="navigateToedit()">
+    <ion-item *ngFor="let documentLibro of arrayColeccionLibros" (click)="selecLibro(documentLibro)">
       <ion-grid>
         <ion-row>
           <h2>{{documentLibro.data.titulo}}</h2>
