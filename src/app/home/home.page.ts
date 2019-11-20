@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FirestoreService } from '../firestore.service';
 import { Libro } from '../libro';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -16,12 +17,16 @@ export class HomePage {
     data: {} as Libro
    }];
 
-  constructor(private firestoreService: FirestoreService) {
+  constructor(private firestoreService: FirestoreService, private router: Router) {
 
     this.libroEditando = {} as Libro;
     this.obtenerListaLibros();
   }
 
+  navigateToedit() {
+    this.router.navigate(["/edit"]);
+  }
+  
   clicBotonInsertar() {
     this.firestoreService.insertar("libros", this.libroEditando).then(() => {
       console.log('Libro creada correctamente!');
