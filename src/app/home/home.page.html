@@ -19,7 +19,10 @@
         </ion-row>
       </ion-grid>
     </ion-item>
-    <!-- <ion-button (click)="clicBotonBorrar()">Borrar Libro</ion-button> -->
-    <!-- <ion-button (click)="clicBotonModificar()">Modificar Libro</ion-button> -->
   </ion-list>
+  <ion-fab  horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button (click)="insertar()">
+      <ion-icon ios="ios-add" md="md-add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

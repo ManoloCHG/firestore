@@ -19,7 +19,7 @@ export class EditPage implements OnInit {
     data: {} as Libro
    };
 
-  constructor(private activatedRoute: ActivatedRoute, private firestoreService: FirestoreService, private router) { 
+  constructor(private activatedRoute: ActivatedRoute, private firestoreService: FirestoreService, private router: Router) { 
     
     this.firestoreService.consultarPorId("libros", this.activatedRoute.snapshot.paramMap.get("id")).subscribe((resultado) => {
       // Preguntar si se hay encontrado un document con ese ID
@@ -31,6 +31,10 @@ export class EditPage implements OnInit {
       } else {
         // No se ha encontrado un documentLibro con ese ID. Vaciar los datos que hubiera
         this.documentLibro.data = {} as Libro;
+      }
+      if(this.id == "nuevo"){
+        document.getElementById("modificar").innerHTML= "Añadir";
+        document.getElementById("borrar").setAttribute("class","invisible");
       } 
     });
   }
@@ -42,9 +46,7 @@ export class EditPage implements OnInit {
   idLibroSelec: string;
 
   selecLibro(libroSelec) {
-    console.log("Libro seleccionado: ");
-    console.log(libroSelec);
-    this.idLibroSelec = libroSelec.id;
+    this.idLibroSelec = libroSelec.data.id;
     this.documentLibro.titulo = libroSelec.data.titulo;
     this.documentLibro.descripcion = libroSelec.data.descripcion;
     this.documentLibro.imagen = libroSelec.data.imagen;
@@ -55,14 +57,14 @@ export class EditPage implements OnInit {
 
   clicBotonModificar() {
     if (this.id != "nuevo") {
-      this.firestoreService.actualizar("personaje", this.id, this.documentLibro.data).then(() => {
+      this.firestoreService.actualizar("libros", this.id, this.documentLibro.data).then(() => {
         this.router.navigate(["/home"]);
       }, (error) => {
         console.error(error);
       });
     } else{
-      this.firestoreService.insertar("personaje", this.documentLibro.data).then(() => {
-        console.log('Personaje creado correctamente!');
+      this.firestoreService.insertar("libros", this.documentLibro.data).then(() => {
+        console.log('libro creado correctamente!');
         this.router.navigate(["/home"]);
       }, (error) => {
         console.error(error);
@@ -71,7 +73,7 @@ export class EditPage implements OnInit {
   }
 
   clicBotonBorrar() {
-    this.firestoreService.borrar("libros", this.idLibroSelec).then(() => {
+    this.firestoreService.borrar("libros", this.documentLibro.id).then(() => {
       this.router.navigate(["/home"]);;
     })
   }

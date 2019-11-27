@@ -46,4 +46,8 @@ export class HomePage {
     this.router.navigate(["/edit/"+this.idLibroSelec]);
   }
 
+  insertar() {
+    this.router.navigate(["/edit/nuevo"]);
+  }
+
 }
