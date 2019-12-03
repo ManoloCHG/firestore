@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Libro } from '../libro';
 import { FirestoreService } from '../firestore.service';
 import { Router } from "@angular/router";
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -19,8 +20,9 @@ export class EditPage implements OnInit {
     data: {} as Libro
    };
 
-  constructor(private activatedRoute: ActivatedRoute, private firestoreService: FirestoreService, private router: Router) { 
-    
+  constructor(private activatedRoute: ActivatedRoute, private firestoreService: FirestoreService, 
+              private router: Router, public alertController: AlertController) { 
+
     this.firestoreService.consultarPorId("libros", this.activatedRoute.snapshot.paramMap.get("id")).subscribe((resultado) => {
       // Preguntar si se hay encontrado un document con ese ID
       if(resultado.payload.data() != null) {
@@ -78,4 +80,27 @@ export class EditPage implements OnInit {
     })
   }
 
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: 'CONFIRMAR',
+      message: '<strong>¿Desea borrar este libro?</strong>',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Confirmar',
+          handler: () => {
+            this.clicBotonBorrar();
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
 }

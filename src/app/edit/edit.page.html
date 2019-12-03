@@ -35,6 +35,6 @@
     </ion-item>
     <ion-img [src]="documentLibro.data.url"></ion-img>
     <ion-button id="modificar" (click)="clicBotonModificar()" >Modificar Libro</ion-button>
-    <ion-button id="borrar" (click)="clicBotonBorrar()">Borrar Libro</ion-button>
+    <ion-button id="borrar" (click)="presentAlertConfirm()">Borrar Libro</ion-button>
   </div>
 </ion-content>
