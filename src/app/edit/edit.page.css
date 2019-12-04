@@ -1,0 +1,7 @@
+ion-header {
+  --ion-background-color: #c5e1a5;
+}
+ion-button {
+  --background: #9ccc65;
+  --background-activated: #c5e1a5;
+}

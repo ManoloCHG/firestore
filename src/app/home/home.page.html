@@ -3,11 +3,13 @@
     <ion-title>
       Libros
     </ion-title>
+    <ion-button slot="end">
+      <ion-icon slot="icon-only" name="more"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h1>LISTA DE LIBROS</h1>
   <ion-list>
     <ion-item *ngFor="let documentLibro of arrayColeccionLibros" (click)="selecLibro(documentLibro)">
       <ion-grid>
@@ -26,3 +28,13 @@
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button slot="start">
+      <ion-icon slot="icon-only" name="contact"></ion-icon>
+    </ion-button>
+    <ion-button slot="end">
+      <ion-icon slot="icon-only" name="search"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

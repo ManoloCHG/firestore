@@ -1,5 +1,13 @@
-.fapbut {
-  position: fixed;
-  right: 10%;
-  bottom: 5%;
+ion-header {
+  --ion-background-color: #c5e1a5;
+}
+ion-fab-button {
+  --background: #c5e1a5;
+  --background-activated: #9ccc65;
+}
+ion-button {
+  --background: #9ccc65;
+}
+ion-footer {
+  --ion-background-color: #c5e1a5;
 }
