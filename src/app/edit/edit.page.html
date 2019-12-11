@@ -1,9 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Edit</ion-title>
+    <ion-title></ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+    <ion-button slot="end">
+      <ion-icon slot="icon-only" name="more"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -38,3 +41,13 @@
     <ion-button id="borrar" (click)="presentAlertConfirm()">Borrar Libro</ion-button>
   </div>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button slot="start" (click)="irperfil()">
+      <ion-icon slot="icon-only" name="contact" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" (click)="irbuscar()">
+      <ion-icon slot="icon-only" name="search" ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

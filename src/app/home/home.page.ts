@@ -50,4 +50,12 @@ export class HomePage {
     this.router.navigate(["/edit/nuevo"]);
   }
 
+  irbuscar(){
+    this.router.navigate(["/buscar"]);
+  }
+
+  irperfil(){
+    this.router.navigate(["/perfil"]);
+  }
+
 }
