@@ -41,8 +41,6 @@ export class HomePage {
     console.log("Libro seleccionado: ");
     console.log(libroSelec);
     this.idLibroSelec = libroSelec.id;
-    this.libroEditando.titulo = libroSelec.data.titulo;
-    this.libroEditando.descripcion = libroSelec.data.descripcion;
     this.router.navigate(["/edit/"+this.idLibroSelec]);
   }
 
