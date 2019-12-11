@@ -103,4 +103,16 @@ export class EditPage implements OnInit {
     });
     await alert.present();
   }
+
+  irbuscar(){
+    this.router.navigate(["/buscar"]);
+  }
+
+  irperfil(){
+    this.router.navigate(["/perfil"]);
+  }
+
+  irinicio(){
+    this.router.navigate(["/home"]);
+  }
 }

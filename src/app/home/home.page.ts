@@ -58,4 +58,8 @@ export class HomePage {
     this.router.navigate(["/perfil"]);
   }
 
+  irinicio(){
+    this.router.navigate(["/home"]);
+  }
+
 }

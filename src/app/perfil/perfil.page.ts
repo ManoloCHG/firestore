@@ -13,4 +13,16 @@ export class PerfilPage implements OnInit {
   ngOnInit() {
   }
 
+  irbuscar(){
+    this.router.navigate(["/buscar"]);
+  }
+
+  irperfil(){
+    this.router.navigate(["/perfil"]);
+  }
+
+  irinicio(){
+    this.router.navigate(["/home"]);
+  }
+
 }
