@@ -55,6 +55,7 @@ export class EditPage implements OnInit {
     this.documentLibro.ISBN = libroSelec.data.ISBN;
     this.documentLibro.autor = libroSelec.data.autor;
     this.documentLibro.idioma = libroSelec.data.idioma;
+    this.documentLibro.idioma = libroSelec.data.date;
   }
 
   clicBotonModificar() {
@@ -89,14 +90,14 @@ export class EditPage implements OnInit {
           text: 'Cancelar',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
+          handler: () => {
+            console.log('Operacion cancelada');
           }
         }, {
           text: 'Confirmar',
           handler: () => {
             this.clicBotonBorrar();
-            console.log('Confirm Okay');
+            console.log('Operacion realizada correctamente');
           }
         }
       ]

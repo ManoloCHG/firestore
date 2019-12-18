@@ -5,4 +5,5 @@ export interface Libro {
     autor: string;
     ISBN: number;
     idioma: string;
+    date: string;
 }

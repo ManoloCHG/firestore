@@ -12,31 +12,41 @@
 
 <ion-content>
   <div class="ion-padding">
-    <ion-item>
-      <ion-label>Título</ion-label>
-      <ion-input [(ngModel)]="documentLibro.data.titulo"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Descripción</ion-label>
-      <ion-input [(ngModel)]="documentLibro.data.descripcion"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Imagen</ion-label>
-      <ion-input [(ngModel)]="documentLibro.data.url"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>ISBN</ion-label>
-      <ion-input [(ngModel)]="documentLibro.data.ISBN"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Autor</ion-label>
-      <ion-input [(ngModel)]="documentLibro.data.autor"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Idioma</ion-label>
-      <ion-input [(ngModel)]="documentLibro.data.idioma"></ion-input>
-    </ion-item>
-    <ion-img [src]="documentLibro.data.url"></ion-img>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-img [src]="documentLibro.data.url"></ion-img>
+        </ion-col>
+        <ion-col>
+          <ion-item>            
+            <ion-input [(ngModel)]="documentLibro.data.titulo" placeholder="titulo"></ion-input>
+          </ion-item>
+          <ion-item>            
+            <ion-input [(ngModel)]="documentLibro.data.url" placeholder="Imagen"></ion-input>
+          </ion-item>
+          <ion-item>            
+            <ion-input [(ngModel)]="documentLibro.data.ISBN" placeholder="ISBN"></ion-input>
+          </ion-item>
+          <ion-item>           
+            <ion-input [(ngModel)]="documentLibro.data.autor" placeholder="Autor"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="documentLibro.data.idioma" placeholder="Idioma"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="documentLibro.data.date" placeholder="Fecha"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <b><p>DESCRIPCION</p></b>
+        </ion-col>
+      </ion-row>
+      <ion-row>         
+        <ion-textarea [(ngModel)]="documentLibro.data.descripcion" placeholder="descripcion" rows="10" cols="20"></ion-textarea>
+      </ion-row>
+    </ion-grid>
     <ion-button id="modificar" (click)="clicBotonModificar()" >Modificar Libro</ion-button>
     <ion-button id="borrar" (click)="presentAlertConfirm()">Borrar Libro</ion-button>
   </div>

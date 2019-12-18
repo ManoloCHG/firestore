@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 })
 export class HomePage {
 
-  libroEditando: Libro; 
+  
   
   arrayColeccionLibros: any = [{
     id: "",
@@ -19,7 +19,6 @@ export class HomePage {
 
   constructor(private firestoreService: FirestoreService, private router: Router) {
 
-    this.libroEditando = {} as Libro;
     this.obtenerListaLibros();
   }
  

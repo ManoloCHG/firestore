@@ -13,10 +13,14 @@
     <ion-item *ngFor="let documentLibro of arrayColeccionLibros" (click)="selecLibro(documentLibro)">
       <ion-grid>
         <ion-row>
-          <h2>{{documentLibro.data.titulo}}</h2>
-        </ion-row>
-        <ion-row>
-          <p>{{documentLibro.data.descripcion}}</p>
+          <ion-col size="3">
+            <ion-img [src]="documentLibro.data.url"></ion-img>
+          </ion-col>
+          <ion-col>
+            <h2><b>{{documentLibro.data.titulo}}</b></h2>
+            <p>{{documentLibro.data.autor}}</p>
+            <p>{{documentLibro.data.date}}</p>
+          </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>
