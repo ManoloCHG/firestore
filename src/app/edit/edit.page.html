@@ -22,9 +22,6 @@
             <ion-input [(ngModel)]="documentLibro.data.titulo" placeholder="titulo"></ion-input>
           </ion-item>
           <ion-item>            
-            <ion-input [(ngModel)]="documentLibro.data.url" placeholder="Imagen"></ion-input>
-          </ion-item>
-          <ion-item>            
             <ion-input [(ngModel)]="documentLibro.data.ISBN" placeholder="ISBN"></ion-input>
           </ion-item>
           <ion-item>           
@@ -35,7 +32,8 @@
           </ion-item>
           <ion-item>
             <ion-input [(ngModel)]="documentLibro.data.date" placeholder="Fecha"></ion-input>
-          </ion-item>
+          </ion-item>          
+          <ion-button size="small" class="ios button button-small button-solid ion-activatable ion-focusable hydrated" (click)="uploadImagePicker()"> Subir Imagen</ion-button> 
         </ion-col>
       </ion-row>
       <ion-row>
