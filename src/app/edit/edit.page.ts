@@ -111,6 +111,26 @@ export class EditPage implements OnInit {
     await alert.present();
   }
 
+  async cancelarmod() {
+    const alert = await this.alertController.create({
+      header: 'CONFIRMAR',
+      message: '<strong>¿Desea cancelar los cambios?</strong>',
+      buttons: [
+        {
+          text: 'Continuar',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Descartar',
+          handler: () => {
+            this.router.navigate(["/home"]);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
   async uploadImagePicker(){
     // Mensaje de espera mientras se sube la imagen
     const loading = await this.loadingController.create({
@@ -151,6 +171,7 @@ export class EditPage implements OnInit {
                       .then(downloadURL => {
                         // En la variable downloadURL se tiene la dirección de descarga de la imagen
                         console.log("downloadURL:" + downloadURL);
+                        this.documentLibro.data.url = downloadURL;
                         // Mostrar el mensaje de finalización de la subida
                         toast.present();
                         // Ocultar mensaje de espera
