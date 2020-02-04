@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 
+import { CallNumber } from '@ionic-native/call-number/ngx';
+
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
@@ -8,7 +10,8 @@ import { Router } from "@angular/router";
 })
 export class PerfilPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private callNumber: CallNumber) { }
 
   ngOnInit() {
   }
@@ -25,4 +28,13 @@ export class PerfilPage implements OnInit {
     this.router.navigate(["/home"]);
   }
 
+  llamada(){
+    this.callNumber.callNumber("682762976", true)
+    .then(res => console.log('Launched dialer!', res))
+    .catch(err => console.log('Error launching dialer', err));
+  }
+
 }
+
+
+

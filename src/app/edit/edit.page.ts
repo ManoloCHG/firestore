@@ -5,6 +5,7 @@ import { FirestoreService } from '../firestore.service';
 import { Router } from "@angular/router";
 import { AlertController, ToastController, LoadingController } from '@ionic/angular';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class EditPage implements OnInit {
     public alertController: AlertController,
     private loadingController: LoadingController,
     private toastController: ToastController,
-    private imagePicker: ImagePicker) { 
+    private imagePicker: ImagePicker,
+    private socialSharing: SocialSharing) { 
 
     this.firestoreService.consultarPorId("libros", this.activatedRoute.snapshot.paramMap.get("id")).subscribe((resultado) => {
       // Preguntar si se hay encontrado un document con ese ID
@@ -214,5 +216,31 @@ export class EditPage implements OnInit {
 
   irinicio(){
     this.router.navigate(["/home"]);
+  }
+
+  compilemsg():string{
+    var msg =  'Titulo: '+this.documentLibro.data.titulo+'\n'+'Autor: '+this.documentLibro.data.autor;
+    return msg;
+  }
+
+  regularShare(){
+    var msg = this.compilemsg();
+    this.socialSharing.share(msg, null, null, null);
+  }
+
+  whatsappShare(){
+    var msg  = this.compilemsg();
+    this.socialSharing.shareViaWhatsApp(msg, null, null);
+     
+  }
+
+  twitterShare(){
+    var msg  = this.compilemsg();
+    this.socialSharing.shareViaTwitter(msg, null, null);
+  }
+
+  facebookShare(){
+    var msg  = this.compilemsg();
+    this.socialSharing.shareViaFacebook(msg, null, null);
   }
 }
