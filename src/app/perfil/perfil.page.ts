@@ -24,13 +24,14 @@ export class PerfilPage implements OnInit {
   }
   // The below function is added
   loadMap(){
-  this.map = new Map("mapId").setView([36.6800271,-5.4454291], 13);
+  this.map = new Map("mapId").setView([36.785633127081084,-5.555866062641145], 13);
   tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       { attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors,<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY- SA</a>'})
       .addTo(this.map); // This line is added to add the Tile Layer to our map
-    }
-    goBack(){
-      this.router.navigate(["home"]);
+
+      marker([36.785633127081084,-5.555866062641145]).addTo(this.map)
+      .bindPopup('La estanteria<br> Pradense.')
+      .openPopup();
     }
     locatePosition(){
       this.map.locate({setView:true}).on("locationfound", (e: any)=> {
