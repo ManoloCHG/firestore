@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Map,tileLayer,marker} from 'leaflet';
 import { Router } from "@angular/router";
-
 import { CallNumber } from '@ionic-native/call-number/ngx';
 
 
@@ -33,16 +32,8 @@ export class PerfilPage implements OnInit {
       .bindPopup('La estanteria<br> Pradense.')
       .openPopup();
     }
-    locatePosition(){
-      this.map.locate({setView:true}).on("locationfound", (e: any)=> {
-        this.newMarker = marker([e.latitude,e.longitude], {draggable: 
-        true}).addTo(this.map);
-        this.newMarker.bindPopup("You are located here!").openPopup();
-      
-        this.newMarker.on("dragend", ()=> {
-          const position = this.newMarker.getLatLng();
-        });
-    });
+  locatePosition(){
+    
   }
   ngOnInit() {
   }
