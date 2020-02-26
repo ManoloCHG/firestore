@@ -26,7 +26,7 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
   imports: [BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     AngularFirestoreModule],
   providers: [
