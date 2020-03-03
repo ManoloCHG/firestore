@@ -60,8 +60,9 @@
         <ion-textarea [(ngModel)]="documentLibro.data.descripcion" placeholder="descripcion" rows="10" cols="20"></ion-textarea>
       </ion-row>
     </ion-grid>
-    <ion-button id="modificar" (click)="clicBotonModificar()" >Modificar Libro</ion-button>
-    <ion-button id="borrar" (click)="presentAlertConfirm()">Borrar Libro</ion-button>
+    <ion-button *ngIf="isID" id="modificar" (click)="clicBotonModificar()" >Añadir</ion-button>
+    <ion-button *ngIf="!isID" id="modificar" (click)="clicBotonModificar()" >Modificar Libro</ion-button>
+    <ion-button *ngIf="!isID" id="borrar" (click)="presentAlertConfirm()">Borrar Libro</ion-button>
   </div>
   <div *ngIf="!isLogged" class="ion-padding">
     <ion-grid>

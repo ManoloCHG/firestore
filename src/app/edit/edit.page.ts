@@ -21,6 +21,7 @@ export class EditPage implements OnInit {
   userUID: String = "";
   isLogged: boolean;
   id = null;
+  isID: boolean;
 
   documentLibro: any = {
     id: "",
@@ -51,8 +52,7 @@ export class EditPage implements OnInit {
         this.documentLibro.data = {} as Libro;
       }
       if(this.id == "nuevo"){
-        document.getElementById("modificar").innerHTML= "Añadir";
-        document.getElementById("borrar").setAttribute("class","invisible");
+        this.isID = true;
       } 
     });
   }
