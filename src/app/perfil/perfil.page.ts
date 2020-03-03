@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Map,tileLayer,marker} from 'leaflet';
 import { Router } from "@angular/router";
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from '../services/auth.service';
+import { LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -10,16 +13,30 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
+  userEmail: String = "";
+  userUID: String = "";
+  isLogged: boolean;
   map:Map;
   newMarker:any;
   address:string[];
   constructor(private router: Router,
-    private callNumber: CallNumber) { }
+    private callNumber: CallNumber,
+    public afAuth: AngularFireAuth,
+    private authService: AuthService,
+    public loadingCtrl: LoadingController,) { }
   
 
     // The below function is added
   ionViewDidEnter(){
     this.loadMap();
+    this.isLogged = false;
+      this.afAuth.user.subscribe(user => {
+        if(user){
+          this.userEmail = user.email;
+          this.userUID = user.uid;
+          this.isLogged = true;
+        }
+      })
   }
   // The below function is added
   loadMap(){
@@ -32,9 +49,7 @@ export class PerfilPage implements OnInit {
       .bindPopup('La estanteria<br> Pradense.')
       .openPopup();
     }
-  locatePosition(){
-    
-  }
+
   ngOnInit() {
   }
 

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from '../services/auth.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-buscar',
@@ -8,7 +11,25 @@ import { Router } from "@angular/router";
 })
 export class BuscarPage implements OnInit {
 
-  constructor(private router: Router) { }
+  userEmail: String = "";
+  userUID: String = "";
+  isLogged: boolean;
+
+  constructor(private router: Router,
+    public afAuth: AngularFireAuth,
+    private authService: AuthService,
+    public loadingCtrl: LoadingController,) { }
+
+  ionViewDidEnter() {
+    this.isLogged = false;
+    this.afAuth.user.subscribe(user => {
+      if(user){
+        this.userEmail = user.email;
+        this.userUID = user.uid;
+        this.isLogged = true;
+      }
+    })
+  }
 
   ngOnInit() {
   }
