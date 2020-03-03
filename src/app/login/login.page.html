@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Logueate</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="form-content">
+  <form class="form" (ngSubmit)="tryLogin(value)">
+    <ion-item>
+      <ion-label position="floating" color="primary">Email</ion-label>
+      <ion-input type="text" [(ngModel)]="value.email" [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating" color="primary">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="value.password" [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+    
+    <ion-button class="submit-btn" expand="block" type="submit" >Log In</ion-button>
+    <label class="error-message">{{errorMessage}}</label>
+  </form>
+  
+  <p class="go-to-register">
+    <a (click)="goRegisterPage()">Nuevo usuario</a>
+  </p>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button slot="start" (click)="irinicio()">
+      <ion-icon slot="icon-only" name="home" ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

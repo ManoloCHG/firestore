@@ -10,31 +10,41 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule,FirestoreSettingsToken } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+
 
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, 
+  imports: [
+    BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
-    AngularFirestoreModule],
+    AngularFireAuthModule,
+    AngularFirestoreModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,
     ImagePicker,
     SocialSharing,
     CallNumber,
+    { provide: FirestoreSettingsToken, useValue: {} },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

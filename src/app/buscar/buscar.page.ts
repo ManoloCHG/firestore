@@ -25,4 +25,12 @@ export class BuscarPage implements OnInit {
     this.router.navigate(["/home"]);
   }
 
+  goRegisterPage(){
+    this.router.navigate(["/register"]);
+  }
+
+  login(){
+    this.router.navigate(["/login"]);
+  }
+
 }

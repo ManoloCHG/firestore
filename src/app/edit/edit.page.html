@@ -4,14 +4,10 @@
     <ion-buttons slot="start">
       <ion-button (click)="cancelarmod()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
     </ion-buttons>
-    <ion-button slot="end">
-      <ion-icon slot="icon-only" name="more"></ion-icon>
-    </ion-button>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <div class="ion-padding">
+  <div *ngIf="isLogged" class="ion-padding">
     <ion-grid>
       <ion-row>
         <ion-col size="6">
@@ -67,17 +63,64 @@
     <ion-button id="modificar" (click)="clicBotonModificar()" >Modificar Libro</ion-button>
     <ion-button id="borrar" (click)="presentAlertConfirm()">Borrar Libro</ion-button>
   </div>
+  <div *ngIf="!isLogged" class="ion-padding">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-img [src]="documentLibro.data.url"></ion-img>
+        </ion-col>
+        <ion-col>
+          <ion-item>            
+            <ion-input [(ngModel)]="documentLibro.data.titulo" placeholder="titulo" disabled></ion-input>
+          </ion-item>
+          <ion-item>            
+            <ion-input [(ngModel)]="documentLibro.data.ISBN" placeholder="ISBN" disabled></ion-input>
+          </ion-item>
+          <ion-item>           
+            <ion-input [(ngModel)]="documentLibro.data.autor" placeholder="Autor" disabled></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="documentLibro.data.idioma" placeholder="Idioma" disabled></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="documentLibro.data.date" placeholder="Fecha" disabled></ion-input>
+          </ion-item>          
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <div class="centrado">
+          <ion-button (click)="whatsappShare()">
+            <ion-icon name="logo-whatsapp"></ion-icon>
+          </ion-button>
+          <ion-button (click)="twitterShare()">
+            <ion-icon name="logo-twitter"></ion-icon>
+          </ion-button>
+          <ion-button (click)="facebookShare()">
+            <ion-icon name="logo-facebook"></ion-icon>
+          </ion-button>
+          <ion-button>
+            <ion-icon name="logo-instagram"></ion-icon>
+          </ion-button>
+          <ion-button (click)="regularShare()">
+            <ion-icon name="share"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <b><p>DESCRIPCION</p></b>
+        </ion-col>
+      </ion-row>
+      <ion-row>         
+        <ion-textarea [(ngModel)]="documentLibro.data.descripcion" placeholder="descripcion" rows="10" cols="20" disabled></ion-textarea>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-button slot="start" (click)="irperfil()">
-      <ion-icon slot="icon-only" name="contact" ></ion-icon>
-    </ion-button>
     <ion-button slot="start" (click)="irinicio()">
       <ion-icon slot="icon-only" name="home" ></ion-icon>
-    </ion-button>
-    <ion-button slot="end" (click)="irbuscar()">
-      <ion-icon slot="icon-only" name="search" ></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-footer>

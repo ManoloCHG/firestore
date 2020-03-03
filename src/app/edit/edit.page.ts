@@ -6,6 +6,8 @@ import { Router } from "@angular/router";
 import { AlertController, ToastController, LoadingController } from '@ionic/angular';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -15,6 +17,9 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 })
 export class EditPage implements OnInit {
 
+  userEmail: String = "";
+  userUID: String = "";
+  isLogged: boolean;
   id = null;
 
   documentLibro: any = {
@@ -29,7 +34,10 @@ export class EditPage implements OnInit {
     private loadingController: LoadingController,
     private toastController: ToastController,
     private imagePicker: ImagePicker,
-    private socialSharing: SocialSharing) { 
+    private socialSharing: SocialSharing,
+    public afAuth: AngularFireAuth,
+    private authService: AuthService,
+    public loadingCtrl: LoadingController,) { 
 
     this.firestoreService.consultarPorId("libros", this.activatedRoute.snapshot.paramMap.get("id")).subscribe((resultado) => {
       // Preguntar si se hay encontrado un document con ese ID
@@ -205,6 +213,16 @@ export class EditPage implements OnInit {
       });
   }
  
+  ionViewDidEnter() {
+    this.isLogged = false;
+    this.afAuth.user.subscribe(user => {
+      if(user){
+        this.userEmail = user.email;
+        this.userUID = user.uid;
+        this.isLogged = true;
+      }
+    })
+  }
 
   irbuscar(){
     this.router.navigate(["/buscar"]);

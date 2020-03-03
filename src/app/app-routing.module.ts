@@ -7,6 +7,8 @@ const routes: Routes = [
   { path: 'edit/:id', loadChildren: './edit/edit.module#EditPageModule' },
   { path: 'perfil', loadChildren: './perfil/perfil.module#PerfilPageModule' },
   { path: 'buscar', loadChildren: './buscar/buscar.module#BuscarPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
 ];
 
 @NgModule({

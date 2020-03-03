@@ -50,6 +50,14 @@ export class PerfilPage implements OnInit {
     this.router.navigate(["/home"]);
   }
 
+  goRegisterPage(){
+    this.router.navigate(["/register"]);
+  }
+
+  login(){
+    this.router.navigate(["/login"]);
+  }
+
   llamada(){
     this.callNumber.callNumber("682762976", true)
     .then(res => console.log('Launched dialer!', res))

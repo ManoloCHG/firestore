@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { FirestoreService } from '../firestore.service';
 import { Libro } from '../libro';
 import { Router } from "@angular/router";
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from '../services/auth.service';
+import { LoadingController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home',
@@ -10,14 +14,22 @@ import { Router } from "@angular/router";
 })
 export class HomePage {
 
-  
+  userEmail: String = "";
+  userUID: String = "";
+  isLogged: boolean;
+
+  navigate : any;
   
   arrayColeccionLibros: any = [{
     id: "",
     data: {} as Libro
    }];
 
-  constructor(private firestoreService: FirestoreService, private router: Router) {
+  constructor(private firestoreService: FirestoreService, 
+    private router: Router,
+    public afAuth: AngularFireAuth,
+    private authService: AuthService,
+    public loadingCtrl: LoadingController,) {
 
     this.obtenerListaLibros();
   }
@@ -33,6 +45,28 @@ export class HomePage {
       })
     });
   }
+
+  ionViewDidEnter() {
+    this.isLogged = false;
+    this.afAuth.user.subscribe(user => {
+      if(user){
+        this.userEmail = user.email;
+        this.userUID = user.uid;
+        this.isLogged = true;
+      }
+    })
+  }
+
+  logout(){
+    this.authService.doLogout()
+    .then(res => {
+      this.userEmail = "";
+      this.userUID = "";
+      this.isLogged = false;
+      console.log(this.userEmail);
+    }, err => console.log(err));
+  }
+
 
   idLibroSelec: string;
 
@@ -57,6 +91,14 @@ export class HomePage {
 
   irinicio(){
     this.router.navigate(["/home"]);
+  }
+
+  login(){
+    this.router.navigate(["/login"]);
+  }
+
+  goRegisterPage(){
+    this.router.navigate(["/register"]);
   }
 
 }
